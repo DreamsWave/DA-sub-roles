@@ -1,9 +1,10 @@
-const Centrifuge = require("centrifuge");
-const WebSocket = require("ws");
-const dotenv = require("dotenv");
-global.XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+import Centrifuge from "centrifuge";
+import { config } from "dotenv";
+import WebSocket from "ws";
+import { XMLHttpRequest } from "xmlhttprequest";
+global.XMLHttpRequest = XMLHttpRequest;
 
-dotenv.config();
+config();
 
 const { ACCESS_TOKEN } = process.env;
 const SUBSCRIPTION_CONFIG = {
@@ -87,7 +88,7 @@ async function checkForActiveSubscription(username) {
 }
 
 async function addSubscriptionToDb(donation) {
-  const { username, amount, currency, id } = donation;
+  const { username, amount, currency, id, created_at } = donation;
   // Implement database call to add subscription
 }
 
